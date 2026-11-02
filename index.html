@@ -1,0 +1,874 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Priya Chauhan's personal portfolio website">
+<title>Priyanshu Chauhan | Personal Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root {
+    --bg: #f8f6ef;
+    --surface: #ffffff;
+    --green: #214b3b;
+    --green2: #376b55;
+    --rose: #bd8976;
+    --text: #243a30;
+    --muted: #718078;
+    --border: #e8e5dc;
+    --shadow: 0 12px 35px rgba(33,75,59,.09);
+}
+
+body.dark {
+    --bg: #14231d;
+    --surface: #20342b;
+    --green: #a8d1b8;
+    --green2: #c1e0ca;
+    --rose: #e0aa95;
+    --text: #edf4ee;
+    --muted: #b0c0b5;
+    --border: #354c40;
+    --shadow: 0 12px 35px rgba(0,0,0,.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.7;
+    transition: background .3s, color .3s;
+}
+
+a { text-decoration: none; color: inherit; }
+button { font: inherit; }
+
+.container {
+    width: min(1120px, 90%);
+    margin: auto;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    font-weight: bold;
+    color: var(--green);
+}
+
+.logo span { color: var(--rose); }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.nav-links a:hover { color: var(--rose); }
+
+.nav-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.icon-btn, .menu-btn {
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: var(--surface);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.menu-btn { display: none; }
+
+.hero {
+    min-height: 650px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    align-items: center;
+    gap: 55px;
+    padding: 75px 0;
+}
+
+.eyebrow {
+    color: var(--rose);
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 70px);
+    line-height: 1.13;
+    margin: 18px 0;
+}
+
+.hero h1 span { color: var(--rose); }
+
+.hero p {
+    max-width: 560px;
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 23px;
+    border-radius: 30px;
+    background: var(--green);
+    color: white;
+    font-weight: 600;
+    border: 1px solid var(--green);
+    transition: .3s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    opacity: .9;
+}
+
+.btn-outline {
+    color: var(--green);
+    background: transparent;
+}
+
+body.dark .btn-outline { color: var(--text); }
+
+.photo-wrap {
+    width: min(100%, 370px);
+    height: 455px;
+    margin: auto;
+    padding: 10px;
+    border: 2px solid var(--rose);
+    border-radius: 190px 190px 28px 28px;
+    animation: float 5s ease-in-out infinite;
+}
+
+.photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 180px 180px 20px 20px;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+section { padding: 85px 0; }
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading small {
+    color: var(--rose);
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.section-heading h2 {
+    font: 600 clamp(32px, 5vw, 43px) 'Playfair Display', serif;
+    margin-top: 8px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.about-card, .info-card, .skill-card, .project-card,
+.contact-card, .education-card {
+    background: var(--surface);
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+}
+
+.about-card p { color: var(--muted); }
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.info-card {
+    padding: 18px;
+    box-shadow: none;
+}
+
+.info-card i {
+    color: var(--rose);
+    font-size: 22px;
+}
+
+.info-card h4 { margin: 7px 0 2px; }
+.info-card p { font-size: 13px; color: var(--muted); }
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.skill-card {
+    text-align: center;
+    box-shadow: none;
+    transition: .3s;
+}
+
+.skill-card:hover, .project-card:hover {
+    transform: translateY(-7px);
+}
+
+.skill-card i {
+    color: var(--rose);
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.skill-card h3 { font-size: 17px; }
+
+.progress {
+    background: var(--border);
+    height: 7px;
+    border-radius: 10px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress span {
+    display: block;
+    height: 100%;
+    background: var(--rose);
+    border-radius: 10px;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.education-card i {
+    font-size: 25px;
+    color: var(--rose);
+}
+
+.education-card p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+.project-tools {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.filter-btn {
+    padding: 9px 19px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: var(--green);
+    color: white;
+}
+
+.project-search {
+    display: block;
+    max-width: 400px;
+    width: 100%;
+    padding: 13px 18px;
+    margin: 0 auto 25px;
+    border-radius: 25px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    outline: none;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.project-card {
+    padding: 0;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.project-image {
+    height: 170px;
+    display: grid;
+    place-items: center;
+    background: #e9eee7;
+    color: #315744;
+    font-size: 55px;
+}
+
+.project-content { padding: 23px; }
+.project-content p { color: var(--muted); font-size: 14px; margin: 8px 0 15px; }
+
+.project-tag {
+    font-size: 11px;
+    color: var(--rose);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 25px;
+}
+
+.contact-card p {
+    color: var(--muted);
+    margin: 15px 0;
+}
+
+.contact-card i { color: var(--rose); margin-right: 8px; }
+
+form input, form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 14px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 10px;
+    font: inherit;
+    outline: none;
+}
+
+form textarea { min-height: 130px; resize: vertical; }
+
+.socials {
+    display: flex;
+    gap: 13px;
+    margin-top: 20px;
+}
+
+.socials a {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--green);
+    transition: .3s;
+}
+
+.socials a:hover {
+    background: var(--green);
+    color: white;
+}
+
+footer {
+    background: var(--green);
+    color: white;
+    text-align: center;
+    padding: 28px 10px;
+}
+
+footer p { font-size: 13px; }
+
+#topBtn {
+    position: fixed;
+    bottom: 25px;
+    right: 22px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: var(--rose);
+    color: white;
+    cursor: pointer;
+    display: none;
+    z-index: 50;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: .7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media(max-width: 850px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: var(--surface);
+        padding: 25px;
+        flex-direction: column;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.open { display: flex; }
+    .menu-btn { display: block; }
+    .hero { grid-template-columns: 1fr; text-align: center; }
+    .hero p { margin-left: auto; margin-right: auto; }
+    .buttons { justify-content: center; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media(max-width: 550px) {
+    .hero { padding: 55px 0; }
+    .photo-wrap { height: 350px; width: 275px; }
+    .skills-grid, .projects-grid, .education-grid { grid-template-columns: 1fr; }
+    section { padding: 65px 0; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    .section-heading { margin-bottom: 30px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container navbar">
+        <a class="logo" href="#home">Priya<span>.</span></a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+<div class="container">
+    <section class="hero" id="home">
+        <div class="hero-text reveal">
+            <div class="eyebrow">WELCOME TO MY PORTFOLIO</div>
+            <h1>Hello, I'm <span>Priyanshu Chauhan</span></h1>
+            <p>
+                A passionate student and aspiring web developer.
+                I enjoy creating beautiful websites, learning new
+                technologies and turning ideas into reality.
+            </p>
+            <div class="buttons">
+                <a href="#resume" class="btn">Explore My Work <i class="fas fa-arrow-right"></i></a>
+                <a href="resume.pdf" download class="btn btn-outline">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+            </div>
+        </div>
+
+        <div class="photo-wrap reveal">
+            <!-- Apni photo ko my-photo.jpg naam se save karein -->
+            <img src="my-photo.jpg" alt="Priya Chauhan profile photo">
+        </div>
+    </section>
+</div>
+
+<section id="about">
+    <div class="container">
+        <div class="section-heading reveal">
+            <small>GET TO KNOW ME</small>
+            <h2>About Me</h2>
+        </div>
+
+        <div class="about-grid reveal">
+            <div class="about-card">
+                <h3>My Introduction</h3>
+                <p>
+                    Hello! I am Priyanshu Chauhan. I am interested in
+                    computer technology, web development and creative
+                    designing. I enjoy learning new skills and working
+                    on projects that help me grow. My goal is to build
+                    a successful career in technology.
+                </p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-user-graduate"></i>
+                    <h4>Student</h4>
+                    <p>Learning and growing</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-code"></i>
+                    <h4>Developer</h4>
+                    <p>Web development</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Creative</h4>
+                    <p>New ideas</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-rocket"></i>
+                    <h4>Goal</h4>
+                    <p>Career growth</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <div class="container">
+        <div class="section-heading reveal">
+            <small>WHAT I CAN DO</small>
+            <h2>My Skills</h2>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card reveal">
+                <i class="fab fa-html5"></i>
+                <h3>HTML</h3>
+                <div class="progress"><span style="width:85%"></span></div>
+            </div>
+            <div class="skill-card reveal">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS</h3>
+                <div class="progress"><span style="width:75%"></span></div>
+            </div>
+            <div class="skill-card reveal">
+                <i class="fab fa-python"></i>
+                <h3>Python</h3>
+                <div class="progress"><span style="width:60%"></span></div>
+            </div>
+            <div class="skill-card reveal">
+                <i class="fas fa-desktop"></i>
+                <h3>Computer Skills</h3>
+                <div class="progress"><span style="width:80%"></span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="education">
+    <div class="container">
+        <div class="section-heading reveal">
+            <small>MY LEARNING JOURNEY</small>
+            <h2>Education</h2>
+        </div>
+
+        <div class="education-grid">
+            <div class="education-card reveal">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Computer Course </h3>
+                <p><h3> ADCA, CCC </h3>
+        <h4>Yamuna Digital Research Foundation</h4>
+        <p>Bhimpura No. 1, Ballia</p>
+        <p><strong>Passing Year:</strong> 2026</p>
+            </div>
+             <div class="education-grid">
+            <div class="education-card reveal">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>My Education</h3>
+                <p><h3>12th Standard</h3>
+        <h4>G.S. Higher Secondary School</h4>
+        <p>Bhimpura No. 1, Ballia</p>
+        <p><strong>Passing Year:</strong> 2024</p>
+            </div>
+            <div class="education-card reveal">
+                <i class="fas fa-certificate"></i>
+                <p><h3>10th Standard</h3>
+        <h4>G.S. Higher Secondary School </h4>
+        <p>Bhimpura No. 1, Ballia</p>
+        <p><strong>Passing Year:</strong> 2026</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="container">
+        <div class="section-heading reveal">
+            <small>MY RECENT WORK</small>
+            <h2>My Projects</h2>
+        </div>
+
+        <input type="search" id="projectSearch" class="project-search"
+               placeholder="Search my projects...">
+
+        <div class="project-tools">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web Design</button>
+            <button class="filter-btn" data-filter="python">Python</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+            <article class="project-card reveal" data-category="web">
+                <div class="project-image"><i class="fas fa-id-card"></i></div>
+                <div class="project-content">
+                    <span class="project-tag">WEB DESIGN</span>
+                    <h3>Personal Portfolio</h3>
+                    <p>A website to showcase my profile, skills and work.</p>
+                </div>
+            </article>
+
+            <article class="project-card reveal" data-category="python">
+                <div class="project-image"><i class="fas fa-calculator"></i></div>
+                <div class="project-content">
+                    <span class="project-tag">PYTHON</span>
+                    <h3>Calculator</h3>
+                    <p>A simple calculator project using Python.</p>
+                </div>
+            </article>
+
+            <article class="project-card reveal" data-category="web">
+                <div class="project-image"><i class="fas fa-book-open"></i></div>
+                <div class="project-content">
+                    <span class="project-tag">WEB DESIGN</span>
+                    <h3>Educational Website</h3>
+                    <p>A learning website concept for students and study materials.</p>
+                </div>
+            </article>
+        </div>
+        <p id="noProjects" style="display:none;text-align:center;margin-top:20px;color:var(--muted)">
+            No projects found.
+        </p>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="section-heading reveal">
+            <small>LET'S CONNECT</small>
+            <h2>Contact Me</h2>
+        </div>
+
+        <div class="contact-grid reveal">
+            <div class="contact-card">
+                <h3>Get In Touch</h3>
+                <p><i class="fas fa-envelope"></i> priyanshuchauhanc61@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 9369221532</p>
+                <p><i class="fas fa-map-marker-alt"></i> Ballia, India</p>
+
+                <div class="socials">
+                    <!-- Apne social media links yahan add karein -->
+                    <a href="https://www.instagram.com/bypriya.official/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/priyanshuchauhan61" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <h3>Send Me a Message</h3>
+                <form id="contactForm">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <input type="text" id="subject" placeholder="Subject" required>
+                    <textarea id="message" placeholder="Write your message..." required></textarea>
+                    <button type="submit" class="btn">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer>
+    <p>© <span id="year"></span> Priya Chauhan. Made with ❤️</p>
+</footer>
+
+<button id="topBtn" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+// Mobile navigation
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    menuBtn.innerHTML = navLinks.classList.contains('open')
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+});
+
+// Dark and light mode
+const themeBtn = document.getElementById('themeBtn');
+
+if (localStorage.getItem('portfolio-theme') === 'dark') {
+    document.body.classList.add('dark');
+    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+}
+
+themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const dark = document.body.classList.contains('dark');
+    localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light');
+    themeBtn.innerHTML = dark
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
+});
+
+// Project filters and search
+let activeFilter = 'all';
+const searchInput = document.getElementById('projectSearch');
+const projectCards = document.querySelectorAll('.project-card');
+const filterButtons = document.querySelectorAll('.filter-btn');
+
+function filterProjects() {
+    const term = searchInput.value.toLowerCase();
+    let count = 0;
+
+    projectCards.forEach(card => {
+        const category = card.dataset.category;
+        const matchesFilter = activeFilter === 'all' || category === activeFilter;
+        const matchesSearch = card.innerText.toLowerCase().includes(term);
+        const show = matchesFilter && matchesSearch;
+
+        card.style.display = show ? '' : 'none';
+        if (show) count++;
+    });
+
+    document.getElementById('noProjects').style.display =
+        count === 0 ? 'block' : 'none';
+}
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        activeFilter = button.dataset.filter;
+        filterProjects();
+    });
+});
+
+searchInput.addEventListener('input', filterProjects);
+
+// Contact form opens the user's email app
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const yourEmail = 'your-email@example.com';
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    const mailto = `mailto:${yourEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailto;
+});
+
+// Reveal animations
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
+
+// Back to top
+const topBtn = document.getElementById('topBtn');
+
+window.addEventListener('scroll', () => {
+    topBtn.style.display = window.scrollY > 350 ? 'block' : 'none';
+});
+
+topBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Current year
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
